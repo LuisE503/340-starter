@@ -21,20 +21,19 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 50% / 40px 40px;
+  background: white;
   color: var(--text-dark);
   line-height: 1.6;
 }
 
 #wrapper {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
   background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 20px solid transparent;
-  border-image: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 20;
+  border: none;
 }
 
 /******* Header Styles ***************/
@@ -145,14 +144,14 @@ h2 {
 .hero-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: var(--accent-color);
+  color: var(--primary-color);
   border-bottom: none;
 }
 
 .hero-content p {
   margin: 0.25rem 0;
   font-size: 1.1rem;
-  color: var(--accent-color);
+  color: var(--text-dark);
   font-weight: 500;
 }
 
@@ -237,7 +236,7 @@ h2 {
 
 .upgrade-item a {
   display: block;
-  color: var(--text-dark);
+  color: #000000;
   text-decoration: none;
   font-weight: bold;
   margin-top: 0.5rem;
@@ -281,6 +280,16 @@ footer {
 
 /******* Media Queries for Larger Screens ***************/
 @media screen and (min-width: 768px) {
+  body {
+    background: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 50% / 40px 40px;
+  }
+
+  #wrapper {
+    margin: 20px auto;
+    border: 20px solid transparent;
+    border-image: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 20;
+  }
+
   #top-header {
     flex-direction: row;
     justify-content: space-between;
