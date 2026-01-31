@@ -78,4 +78,45 @@ Util.buildClassificationGrid = async function (data) {
   return grid
 }
 
+/* **************************************
+* Build the vehicle detail HTML
+* ************************************ */
+Util.buildInventoryDetail = async function (data) {
+  let detail = "<div id='inv-detail'>"
+  detail += "<div class='inv-detail-image'>"
+  detail += '<img src="' + data.inv_image + '" alt="Image of ' + data.inv_make + ' ' + data.inv_model + '">'
+  detail += "</div>"
+  detail += "<div class='inv-detail-content'>"
+  
+  detail += "<div class='inv-detail-header'>"
+  detail += "<h2>" + data.inv_make + " " + data.inv_model + "</h2>"
+  detail += "</div>"
+  
+  detail += "<div class='inv-detail-price-mileage'>"
+  detail += "<p><strong>Price:</strong> $" + new Intl.NumberFormat("en-US").format(data.inv_price) + "</p>"
+  detail += "<p><strong>Mileage:</strong> " + new Intl.NumberFormat("en-US").format(data.inv_miles) + " miles</p>"
+  detail += "</div>"
+  
+  detail += "<div class='inv-detail-specs'>"
+  detail += "<p><strong>Year:</strong> " + data.inv_year + "</p>"
+  detail += "<p><strong>Color:</strong> " + data.inv_color + "</p>"
+  detail += "</div>"
+  
+  detail += "<div class='inv-detail-description'>"
+  detail += "<h3>Description</h3>"
+  detail += "<p>" + data.inv_description + "</p>"
+  detail += "</div>"
+  
+  detail += "</div>"
+  detail += "</div>"
+  return detail
+}
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
 module.exports = Util

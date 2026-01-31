@@ -440,3 +440,133 @@ footer {
     gap: 1.5rem;
   }
 }
+
+/******* Inventory Detail Styles ***************/
+#inv-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background-color: var(--bg-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inv-detail-image {
+  width: 100%;
+}
+
+.inv-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inv-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inv-detail-header {
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 1rem;
+}
+
+.inv-detail-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+.inv-detail-price-mileage {
+  background-color: white;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.inv-detail-price-mileage p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.inv-detail-price-mileage strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.inv-detail-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.inv-detail-specs p {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.inv-detail-description {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 4px;
+  line-height: 1.8;
+}
+
+.inv-detail-description h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.inv-detail-description p {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+/* Tablet and Desktop Responsive - Side by side layout */
+@media screen and (min-width: 768px) {
+  #inv-detail {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .inv-detail-image {
+    flex: 0 0 40%;
+    min-width: 0;
+  }
+
+  .inv-detail-content {
+    flex: 1;
+  }
+
+  .inv-detail-specs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #inv-detail {
+    gap: 3rem;
+    padding: 3rem 2rem;
+  }
+
+  .inv-detail-image {
+    flex: 0 0 50%;
+  }
+
+  .inv-detail-header h2 {
+    font-size: 2rem;
+  }
+
+  .inv-detail-specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

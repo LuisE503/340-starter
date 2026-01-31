@@ -19,4 +19,27 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build inventory detail view
+ * ************************** */
+invCont.buildByInvId = async function (req, res, next) {
+  const inv_id = req.params.invId
+  const data = await invModel.getInventoryById(inv_id)
+  const detail = await utilities.buildInventoryDetail(data)
+  let nav = await utilities.getNav()
+  const title = data.inv_make + " " + data.inv_model
+  res.render("./inventory/detail", {
+    title: title,
+    nav,
+    detail,
+  })
+}
+
+/* ***************************
+ *  Trigger intentional error for testing
+ * ************************** */
+invCont.triggerError = async function (req, res, next) {
+  throw new Error("Intentional error for testing error handling middleware")
+}
+
 module.exports = invCont
