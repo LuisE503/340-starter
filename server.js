@@ -18,6 +18,9 @@ const session = require("express-session")
 const pool = require("./database/")
 const bodyParser = require("body-parser")
 
+// Session secret fallback (avoid crash if env var missing)
+const sessionSecret = process.env.SESSION_SECRET || "development-secret-change-me"
+
 /* ***********************
  * Middleware
  *************************/
@@ -26,7 +29,7 @@ app.use(session({
     createTableIfMissing: true,
     pool,
   }),
-  secret: process.env.SESSION_SECRET,
+  secret: sessionSecret,
   resave: true,
   saveUninitialized: true,
   name: 'sessionId',
@@ -75,8 +78,8 @@ app.use(async (req, res, next) => {
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT
-const host = process.env.HOST
+const port = process.env.PORT || 5500
+const host = process.env.HOST || "localhost"
 
 /* ***********************
  * Log statement to confirm server operation
