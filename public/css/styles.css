@@ -21,7 +21,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background: white;
+  background: #ffffff;
   color: var(--text-dark);
   line-height: 1.6;
 }
@@ -29,11 +29,12 @@ body {
 #wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: white;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   border: none;
+  border-image: none;
 }
 
 /******* Header Styles ***************/
@@ -350,13 +351,13 @@ footer {
 /******* Media Queries for Larger Screens ***************/
 @media screen and (min-width: 768px) {
   body {
-    background: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 50% / 40px 40px;
+    background: repeating-conic-gradient(#000 0% 25%, #ffffff 0% 50%) 50% / 40px 40px;
   }
 
   #wrapper {
     margin: 20px auto;
     border: 20px solid transparent;
-    border-image: repeating-conic-gradient(#000 0% 25%, white 0% 50%) 20;
+    border-image: repeating-conic-gradient(#000 0% 25%, #ffffff 0% 50%) 20;
   }
 
   #top-header {
@@ -568,5 +569,278 @@ footer {
 
   .inv-detail-specs {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/******* Account Forms (Login & Register) ***************/
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+form p {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-dark);
+}
+
+form p a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+form p a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.password-requirements {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background-color: #fff3cd;
+  padding: 1rem;
+  border-left: 4px solid #ffc107;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.password-requirements ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding-left: 0;
+}
+
+.password-requirements li {
+  margin-bottom: 0.25rem;
+}
+
+/******* Messages ***************/
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.alert-notice {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+ul.alert li {
+  list-style: none;
+  margin: 0;
+}
+
+/******* Form Validation Styles ***************/
+.password-hint {
+  display: block;
+  font-size: 0.9rem;
+  color: #333333;
+  background-color: #f0f4f8;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid var(--primary-color);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Valid/Invalid input styles */
+input:required:valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+input:required:invalid:not(:placeholder-shown) {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+input:focus:invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+input:focus:valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* Error notice list styling */
+ul.notice {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+ul.notice li {
+  padding: 0.25rem 0;
+  margin: 0;
+}
+
+ul.notice li::before {
+  content: "⚠ ";
+}
+
+/******* Management Page Styles ***************/
+.management-links {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.management-links li {
+  margin-bottom: 1rem;
+}
+
+.management-links a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.management-links a:hover {
+  background-color: var(--secondary-color);
+}
+
+.form-note {
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/******* Select element styles ***************/
+select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+select:required:valid {
+  border-color: #28a745;
+}
+
+/******* Textarea styles ***************/
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+textarea:required:valid {
+  border-color: #28a745;
+}
+
+@media screen and (min-width: 768px) {
+  form {
+    max-width: 600px;
+    padding: 3rem;
   }
 }
