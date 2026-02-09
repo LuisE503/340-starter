@@ -60,6 +60,14 @@ router.get(
   utilities.handleErrors(invController.editInventoryView)
 )
 
+// Process update inventory
+router.post(
+  "/update",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
 // Route to trigger intentional error for testing
 router.get(
   "/trigger-error",
