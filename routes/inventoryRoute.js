@@ -48,6 +48,12 @@ router.post(
   utilities.handleErrors(invController.addInventory)
 )
 
+// Route to get inventory by classification as JSON
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+)
+
 // Route to trigger intentional error for testing
 router.get(
   "/trigger-error",
