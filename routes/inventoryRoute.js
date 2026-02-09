@@ -54,6 +54,12 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON)
 )
 
+// Route to build edit inventory view
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.editInventoryView)
+)
+
 // Route to trigger intentional error for testing
 router.get(
   "/trigger-error",
