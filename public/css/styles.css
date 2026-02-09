@@ -237,7 +237,7 @@ h2 {
 
 .upgrade-item a {
   display: block;
-  color: #000000;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: bold;
   margin-top: 0.5rem;
@@ -246,6 +246,10 @@ h2 {
 .upgrade-item a:hover,
 .upgrade-item a:focus {
   text-decoration: underline;
+  color: var(--text-light);
+  background-color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
   outline: 2px solid var(--text-dark);
   outline-offset: 2px;
 }
