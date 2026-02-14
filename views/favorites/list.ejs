@@ -1,0 +1,54 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<% if (locals.errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<% if (favorites && favorites.length > 0) { %>
+  <div id="favorites-display">
+    <table class="favorites-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% favorites.forEach(vehicle => { %>
+          <tr data-inv-id="<%= vehicle.inv_id %>">
+            <td>
+              <a href="/inv/detail/<%= vehicle.inv_id %>">
+                <img src="<%= vehicle.inv_thumbnail %>" alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %> on CSE Motors">
+              </a>
+            </td>
+            <td><%= vehicle.inv_make %></td>
+            <td><%= vehicle.inv_model %></td>
+            <td><%= vehicle.inv_year %></td>
+            <td>$<%= vehicle.inv_price.toLocaleString() %></td>
+            <td>
+              <a href="/inv/detail/<%= vehicle.inv_id %>" class="view-details-btn">View Details</a>
+              <button type="button" class="remove-favorite-btn" data-inv-id="<%= vehicle.inv_id %>">Remove</button>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } else { %>
+  <div class="no-favorites">
+    <p>You haven't added any vehicles to your favorites yet.</p>
+    <p><a href="/inv/">Browse our inventory to find your favorite vehicles!</a></p>
+  </div>
+<% } %>
+
+<script src="/js/favorites.js"></script>

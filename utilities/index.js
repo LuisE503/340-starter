@@ -109,6 +109,15 @@ Util.buildInventoryDetail = async function (data) {
   detail += "<p>" + data.inv_description + "</p>"
   detail += "</div>"
   
+  detail += "<div class='inv-detail-favorite' id='favorite-section' data-inv-id='" + data.inv_id + "'>"
+  detail += "<button type='button' id='add-to-favorites-btn' class='favorite-btn' data-inv-id='" + data.inv_id + "' style='display:none;'>"
+  detail += "❤️ Add to Favorites"
+  detail += "</button>"
+  detail += "<button type='button' id='remove-from-favorites-btn' class='favorite-btn' data-inv-id='" + data.inv_id + "' style='display:none;'>"
+  detail += "💔 Remove from Favorites"
+  detail += "</button>"
+  detail += "</div>"
+  
   detail += "</div>"
   detail += "</div>"
   return detail
