@@ -1,0 +1,78 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<% if (locals.errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<!-- Account Update Form -->
+<form action="/account/update" method="post">
+  <h2>Update Account Information</h2>
+  
+  <label for="account_firstname">First Name:</label>
+  <input 
+    type="text" 
+    id="account_firstname" 
+    name="account_firstname" 
+    required
+    minlength="1"
+    placeholder="Enter first name"
+    <% if (locals.account_firstname) { %>value="<%= account_firstname %>"<% } %>
+  >
+
+  <label for="account_lastname">Last Name:</label>
+  <input 
+    type="text" 
+    id="account_lastname" 
+    name="account_lastname" 
+    required
+    minlength="1"
+    placeholder="Enter last name"
+    <% if (locals.account_lastname) { %>value="<%= account_lastname %>"<% } %>
+  >
+
+  <label for="account_email">Email Address:</label>
+  <input 
+    type="email" 
+    id="account_email" 
+    name="account_email" 
+    required
+    placeholder="Enter email address"
+    <% if (locals.account_email) { %>value="<%= account_email %>"<% } %>
+  >
+
+  <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+
+  <button type="submit">Update Account</button>
+</form>
+
+<!-- Change Password Form -->
+<form action="/account/change-password" method="post">
+  <h2>Change Password</h2>
+  
+  <p>Enter a password to change your current password. Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</p>
+  
+  <label for="account_password">New Password:</label>
+  <span id="password-hint" class="password-hint">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+  <input 
+    type="password" 
+    id="account_password" 
+    name="account_password" 
+    required
+    aria-describedby="password-hint"
+    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+    placeholder="Enter new password"
+  >
+
+  <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+
+  <button type="submit">Change Password</button>
+</form>
+
+<p><a href="/account/">Back to Account Management</a></p>
+
